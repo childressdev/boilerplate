@@ -1,0 +1,30 @@
+/*!
+  Theme Name: The theme name
+  Theme Author: Childress Agency
+  Theme Author URI: https://childressagency.com
+  Version: 1.0
+*/
+
+/*************************************
+* custom variables and bootstrap
+* variable overrides
+*************************************/
+@import "variables";
+
+/*************************************
+* bootstrap and vendor scss files
+*************************************/
+@import "includes/vendors/bootstrap";
+
+/*************************************
+* main scss file with global styles
+*************************************/
+@import "main";
+
+/*************************************
+* scss partial files
+*************************************/
+/* modules */
+
+
+/* sections */
