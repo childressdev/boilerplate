@@ -20,6 +20,7 @@
     "autoprefixer": "^10.0.1",
     "bootstrap": "^4.5.3",
     "cssnano": "^4.1.10",
+    "postcss": "^8.1.2",
     "gulp": "^4.0.2",
     "gulp-concat": "^2.6.1",
     "gulp-order": "^1.2.0",
