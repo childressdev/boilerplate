@@ -23,7 +23,7 @@ add_action('wp_enqueue_scripts', 'cai_scripts');
 function cai_scripts(){
   wp_register_script(
     'bootstrap-scripts',
-    'https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js',
+    'https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js',
     array('jquery'),
     '',
     true
@@ -49,7 +49,7 @@ function cai_add_script_meta($tag, $handle){
       break;
 
     case 'bootstrap-scripts':
-      $tag = str_replace('></script>', ' integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>', $tag);
+      $tag = str_replace('></script>', ' integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>', $tag);
       break;
   }
 
