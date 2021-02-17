@@ -7,7 +7,7 @@ function show_template() {
 	print_r($template);
 }
 
-//hide acf settings (uncomment next line)
+//hide acf Custom Fields menu item (uncomment next line)
 //add_filter('acf/settings/show_admin', '__return_false');
 
 add_action('wp_enqueue_scripts', 'jquery_cdn');
@@ -83,7 +83,6 @@ function cai_admin_styles(){
 add_action('after_setup_theme', 'cai_setup');
 function cai_setup(){
   add_theme_support('post-thumbnails');
-  //set_post_thumbnail_size(320, 320);
 
   add_theme_support(
     'html5',
