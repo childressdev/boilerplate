@@ -17,10 +17,10 @@
   },
   "homepage": "https://github.com/ChildressAgency/boilerplate#readme",
   "devDependencies": {
-    "autoprefixer": "^10.2.4",
+    "autoprefixer": "^10.2.5",
     "bootstrap": "^4.6.0",
-    "cssnano": "^4.1.10",
-    "postcss": "^8.2.6",
+    "cssnano": "^5.0.2",
+    "postcss": "^8.2.15",
     "gulp": "^4.0.2",
     "gulp-concat": "^2.6.1",
     "gulp-order": "^1.2.0",
