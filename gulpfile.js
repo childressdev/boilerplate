@@ -25,7 +25,7 @@ gulp.task('js', function(){
   return gulp.src('dev/js/**/*.js')
     .pipe(sourcemaps.init())
     .pipe(order([
-      'vendor/**/*.js',
+      'vendors/**/*.js',
       '9_custom-scripts.js'
     ]))
     .pipe(concat('custom-scripts.min.js'))
