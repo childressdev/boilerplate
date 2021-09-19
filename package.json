@@ -17,17 +17,17 @@
   },
   "homepage": "https://github.com/ChildressAgency/boilerplate#readme",
   "devDependencies": {
-    "autoprefixer": "^10.2.6",
-    "bootstrap": "^5.0.2",
-    "cssnano": "^5.0.6",
-    "postcss": "^8.3.5",
+    "autoprefixer": "^10.3.4",
+    "bootstrap": "^5.1.1",
+    "cssnano": "^5.0.8",
+    "postcss": "^8.3.6",
     "gulp": "^4.0.2",
     "gulp-concat": "^2.6.1",
     "gulp-order": "^1.2.0",
-    "gulp-postcss": "^9.0.0",
+    "gulp-postcss": "^9.0.1",
     "gulp-sass": "^5.0.0",
     "gulp-sourcemaps": "^3.0.0",
     "gulp-uglify": "^3.0.2",
-    "sass": "^1.35.2"
+    "sass": "^1.41.1"
   }
 }
