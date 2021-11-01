@@ -2,10 +2,6 @@
   Editor and Gutenberg Block Styles
 */
 
-.wp-block{
-  max-width: none;
-}
-
 @import "variables";
 
 /* Bootstrap components */
@@ -17,3 +13,10 @@
 
 
 /* components */
+
+
+@import "wordpress";
+
+.wp-block{
+  max-width: none;
+}

@@ -1,0 +1,58 @@
+/*
+  WordPress class overrides
+*/
+
+.has-extra-small-font-size{
+  font-size: 0.7778rem;
+}
+.has-small-font-size{
+  font-size: 0.8889rem;
+}
+.has-normal-font-size{
+  font-size: 1rem;
+}
+.has-medium-font-size{
+  font-size: 1.3333rem;
+}
+.has-large-font-size{
+  font-size: 1.7778rem;
+}
+.has-extra-large-font-size{
+  font-size: 3.1111rem;
+}
+.has-huge-font-size{
+  font-size: 3.6111rem;
+}
+
+.has-color-main-color{
+  color: $color-main;
+}
+.has-color-alt-1-color{
+  color: $color-alt;
+}
+.has-color-alt-2-color{
+  color: $color-alt-2;
+}
+.has-color-alt-3-color{
+  color: $color-alt-3;
+}
+.has-color-alt-4-color{
+  color: $color-light-gray;
+}
+.has-black-color{
+  color: #000;
+}
+.has-white-color{
+  color: #fff;
+}
+
+.center{
+  margin-left: auto;
+  margin-right: auto;
+}
+.left{
+  margin-right: auto;
+}
+.right{
+  margin-left: auto;
+}
