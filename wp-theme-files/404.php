@@ -1,8 +1,7 @@
 <?php get_header(); ?>
 <main id="main">
   <div class="container">
-    <h2>Nothing Here</h2>
-    <p>Sorry, the page you were looking for could not be found.</p>
+    <?php the_field('nothing_found_message', 'option'); ?>
   </div>
 </main>
 <?php get_footer();
