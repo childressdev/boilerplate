@@ -17,7 +17,7 @@ add_action('wp_enqueue_scripts', 'jquery_cdn');
 function jquery_cdn(){
   if(!is_admin()){
     wp_deregister_script('jquery');
-    wp_register_script('jquery', 'https://code.jquery.com/jquery-3.5.1.min.js', false, null, true);
+    wp_register_script('jquery', 'https://code.jquery.com/jquery-3.6.0.min.js', false, null, true);
     wp_enqueue_script('jquery');
   }
 }
@@ -29,7 +29,7 @@ add_action('wp_enqueue_scripts', 'cai_scripts');
 function cai_scripts(){
   wp_register_script(
     'bootstrap-scripts',
-    'https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js',
+    'https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js',
     array('jquery'),
     '',
     true
@@ -54,11 +54,11 @@ add_filter('script_loader_tag', 'cai_add_script_meta', 10, 2);
 function cai_add_script_meta($tag, $handle){
   switch($handle){
     case 'jquery':
-      $tag = str_replace('></script>', ' integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>', $tag);
+      $tag = str_replace('></script>', ' integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>', $tag);
       break;
 
     case 'bootstrap-scripts':
-      $tag = str_replace('></script>', ' integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ" crossorigin="anonymous"></script>', $tag);
+      $tag = str_replace('></script>', ' integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>', $tag);
       break;
   }
 
@@ -146,28 +146,28 @@ function cai_setup(){
         'slug' => 'normal'
       ),
       array(
+        'name' => esc_html__('Medium', 'cai'),
+        'shortName' => esc_html_x('M', 'Font size', 'cai'),
+        'size' => 24,
+        'slug' => 'medium'
+      ),
+      array(
         'name' => esc_html__('Large', 'cai'),
         'shortName' => esc_html_x('L', 'Font size', 'cai'),
-        'size' => 24,
+        'size' => 32,
         'slug' => 'large'
       ),
       array(
-        'name' => esc_html__('Extra large', 'cai'),
+        'name' => esc_html__('Extra Large', 'cai'),
         'shortName' => esc_html_x('XL', 'Font size', 'cai'),
-        'size' => 32,
+        'size' => 56,
         'slug' => 'extra-large'
       ),
       array(
         'name' => esc_html__('Huge', 'cai'),
         'shortName' => esc_html_x('XXL', 'Font size', 'cai'),
-        'size' => 56,
-        'slug' => 'huge'
-      ),
-      array(
-        'name' => esc_html__('Gigantic', 'cai'),
-        'shortName' => esc_html_x('XXXL', 'Font size', 'cai'),
         'size' => 65,
-        'slug' => 'gigantic'
+        'slug' => 'huge'
       )
     )
   );
@@ -175,11 +175,11 @@ function cai_setup(){
   /**
    * Define custom color palette
    */
-  $light_blue = '#1097CD';
-  $dark_violet = '#262262';
-  $black_violet = '#080714';
-  $orange = '#FCB31F';
-  $light_gray = '#f5f5f5';
+  $color_main = '#1097CD';
+  $color_alt_1 = '#262262';
+  $color_alt_2 = '#080714';
+  $color_alt_3 = '#FCB31F';
+  $color_alt_4 = '#f5f5f5';
   $black = '#000000';
   $white = '#ffffff';
 
@@ -187,29 +187,29 @@ function cai_setup(){
     'editor-color-palette',
     array(
       array(
-        'name' => esc_html__('Light Blue', 'cai'),
-        'slug' => 'light-blue',
-        'color' => $light_blue
+        'name' => esc_html__('Color Main', 'cai'),
+        'slug' => 'color-main',
+        'color' => $color_main
       ),
       array(
-        'name' => esc_html__('Dark Violet', 'cai'),
-        'slug' => 'dark-violet',
-        'color' => $dark_violet
+        'name' => esc_html__('Color Alt 1', 'cai'),
+        'slug' => 'color-alt-1',
+        'color' => $color_alt_1
       ),
       array(
-        'name' => esc_html__('Black Violet', 'cai'),
-        'slug' => 'black-violet',
-        'color' => $black_violet
+        'name' => esc_html__('Color Alt 2', 'cai'),
+        'slug' => 'color-alt-2',
+        'color' => $color_alt_2
       ),
       array(
-        'name' => esc_html__('Orange', 'cai'),
-        'slug' => 'orange',
-        'color' => $orange
+        'name' => esc_html__('Color Alt 3', 'cai'),
+        'slug' => 'color-alt-3',
+        'color' => $color_alt_3
       ),
       array(
-        'name' => esc_html__('Light Gray', 'cai'),
-        'slug' => 'light-gray',
-        'color' => $light_gray
+        'name' => esc_html__('Color Alt 4', 'cai'),
+        'slug' => 'color-alt-4',
+        'color' => $color_alt_4
       ),
       array(
         'name' => esc_html__('Black', 'cai'),
@@ -231,19 +231,9 @@ function cai_setup(){
     'editor-gradient-presets',
     array(
       array(
-        'name' => esc_html__('Light Blue to Dark Violet', 'cai'),
+        'name' => esc_html__('Color Main to Color Alt 1', 'cai'),
         'slug' => 'light-blue-to-dark-violet',
-        'gradient' => 'linear-gradient(to right, ' . $light_blue . ' 0%, ' . $dark_violet . ' 100%)'
-      ),
-      array(
-        'name' => esc_html__('Light Blue to Dark Violet Angle', 'cai'),
-        'slug' => 'light-blue-to-dark-violet-angle',
-        'gradient' => 'linear-gradient(135deg, ' . $light_blue . ' 0%, ' . $dark_violet . ' 100%)'
-      ),
-      array(
-        'name' => esc_html__('Dark Violet to Black Violet', 'cai'),
-        'slug' => 'dark-violet-to-black-violet',
-        'gradient' => 'linear-gradient(to right, ' . $dark_violet . ' 0%, ' . $black_violet . ' 100%)'
+        'gradient' => 'linear-gradient(to right, ' . $color_main . ' 0%, ' . $color_alt_1 . ' 100%)'
       )
     )
   );
@@ -350,6 +340,12 @@ function cai_acf_options_pages(){
     acf_add_options_sub_page(array(
       'page_title' => 'Company Information',
       'menu_title' => 'Company Information',
+      'parent_slug' => 'cai-settings'
+    ));
+
+    acf_add_options_sub_page(array(
+      'page_title' => 'Site Defaults',
+      'menu_title' => 'Site Defaults',
       'parent_slug' => 'cai-settings'
     ));
   }
