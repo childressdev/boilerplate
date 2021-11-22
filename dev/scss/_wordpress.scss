@@ -3,25 +3,25 @@
 */
 
 .has-extra-small-font-size{
-  font-size: 0.7778rem;
+  font-size: $font-size-extra-small;
 }
 .has-small-font-size{
-  font-size: 0.8889rem;
+  font-size: $font-size-small;
 }
 .has-normal-font-size{
-  font-size: 1rem;
+  font-size: $font-size-normal;
 }
 .has-medium-font-size{
-  font-size: 1.3333rem;
+  font-size: $font-size-medium;
 }
 .has-large-font-size{
-  font-size: 1.7778rem;
+  font-size: $font-size-large;
 }
 .has-extra-large-font-size{
-  font-size: 3.1111rem;
+  font-size: $font-size-extra-large;
 }
 .has-huge-font-size{
-  font-size: 3.6111rem;
+  font-size: $font-size-huge;
 }
 
 .has-color-main-color{
@@ -44,6 +44,28 @@
 }
 .has-white-color{
   color: #fff;
+}
+
+.has-color-main-background-color{
+  background-color: $color-main;
+}
+.has-color-alt-1-background-color{
+  background-color: $color-alt-1;
+}
+.has-color-alt-2-background-color{
+  background-color: $color-alt-2;
+}
+.has-color-alt-3-background-color{
+  background-color: $color-alt-3;
+}
+.has-color-alt-4-background-color{
+  background-color: $color-alt-4;
+}
+.has-black-background-color{
+  background-color: #000;
+}
+.has-white-background-color{
+  background-color: #fff;
 }
 
 .center{
