@@ -28,16 +28,22 @@
   color: $color-main;
 }
 .has-color-alt-1-color{
-  color: $color-alt;
+  color: $color-alt-1;
 }
-.has-color-alt-2-color{
-  color: $color-alt-2;
+@if variable-exists(color-alt-2){
+  .has-color-alt-2-color{
+    color: $color-alt-2;
+  }
 }
-.has-color-alt-3-color{
-  color: $color-alt-3;
+@if variable-exists(color-alt-3){
+  .has-color-alt-3-color{
+    color: $color-alt-3;
+  }
 }
-.has-color-alt-4-color{
-  color: $color-light-gray;
+@if variable-exists(color-alt-4){
+  .has-color-alt-4-color{
+    color: $color-alt-4;
+  }
 }
 .has-black-color{
   color: #000;
@@ -49,17 +55,25 @@
 .has-color-main-background-color{
   background-color: $color-main;
 }
-.has-color-alt-1-background-color{
-  background-color: $color-alt-1;
+@if variable-exists(color-alt-1){
+  .has-color-alt-1-background-color{
+    background-color: $color-alt-1;
+  }
 }
-.has-color-alt-2-background-color{
-  background-color: $color-alt-2;
+@if variable-exists(color-alt-2){
+  .has-color-alt-2-background-color{
+    background-color: $color-alt-2;
+  }
 }
-.has-color-alt-3-background-color{
-  background-color: $color-alt-3;
+@if variable-exists(color-alt-3){
+  .has-color-alt-3-background-color{
+    background-color: $color-alt-3;
+  }
 }
-.has-color-alt-4-background-color{
-  background-color: $color-alt-4;
+@if variable-exists(color-alt-4){
+  .has-color-alt-4-background-color{
+    background-color: $color-alt-4;
+  }
 }
 .has-black-background-color{
   background-color: #000;
