@@ -11,6 +11,40 @@ function show_template() {
 //add_filter('acf/settings/show_admin', '__return_false');
 
 /**
+ * customize the color palette
+ */
+function cai_color_palette(){
+  $color_palette = array(
+    'color_main'  => '#A28C0B',
+    'color_alt_1' => '#223D62',
+    'color_alt_2' => '#f2f2f2',
+    'color_alt_3' => '#9D9D9D',
+    'color_alt_4' => '#707070',
+    'black'       => '#000000',
+    'white'       => '#ffffff'
+  );
+
+  return $color_palette;
+}
+
+/**
+ * customize the font sizes
+ */
+function cai_font_sizes(){
+  $font_sizes = array(
+    'XS'  => 16,
+    'S'   => 18,
+    'N'   => 20,
+    'M'   => 28,
+    'L'   => 40,
+    'XL'  => 54,
+    'XXL' => 60
+  );
+
+  return $font_sizes;
+}
+
+/**
  * Use cdn jquery instead of WordPress'
  */
 add_action('wp_enqueue_scripts', 'jquery_cdn');
@@ -85,22 +119,12 @@ function cai_styles(){
 }
 
 /**
- * Enqueue block editor styles
- */
-add_action('enqueue_block_editor_assets', 'cai_admin_styles');
-function cai_admin_styles(){
-  wp_enqueue_style(
-    'editor-style',
-    get_stylesheet_directory_uri() . '/editor.css'
-  );
-}
-
-/**
  * Setup theme options and support
  */
 add_action('after_setup_theme', 'cai_setup');
 function cai_setup(){
   add_theme_support('post-thumbnails');
+  //add_image_size( string $name, int $width, int $height, bool|array $crop = false )
 
   add_theme_support(
     'html5',
@@ -120,68 +144,66 @@ function cai_setup(){
   add_theme_support('responsive-embeds');
   add_theme_support('align-wide');
   add_theme_support('custom-line-height');
+  add_theme_support('custom-spacing');
+
+  add_editor_style('editor.css');
 
   /**
-   * Define editor font sizes
+   * Define editor font sizes for blocks
    */
+  $font_sizes = cai_font_sizes();
   add_theme_support(
     'editor-font-sizes',
     array(
       array(
         'name' => esc_html__('Extra small', 'cai'),
         'shortName' => esc_html_x('XS', 'Font size', 'cai'),
-        'size' => 14,
+        'size' => $font_sizes['XS'],
         'slug' => 'extra-small'
       ),
       array(
         'name' => esc_html__('Small', 'cai'),
         'shortName' => esc_html_x('S', 'Font size', 'cai'),
-        'size' => 16,
+        'size' => $font_sizes['S'],
         'slug' => 'small'
       ),
       array(
         'name' => esc_html__('Normal', 'cai'),
         'shortName' => esc_html_x('N', 'Font size', 'cai'),
-        'size' => 18,
+        'size' => $font_sizes['N'],
         'slug' => 'normal'
       ),
       array(
         'name' => esc_html__('Medium', 'cai'),
         'shortName' => esc_html_x('M', 'Font size', 'cai'),
-        'size' => 24,
+        'size' => $font_sizes['M'],
         'slug' => 'medium'
       ),
       array(
         'name' => esc_html__('Large', 'cai'),
         'shortName' => esc_html_x('L', 'Font size', 'cai'),
-        'size' => 32,
+        'size' => $font_sizes['L'],
         'slug' => 'large'
       ),
       array(
         'name' => esc_html__('Extra Large', 'cai'),
         'shortName' => esc_html_x('XL', 'Font size', 'cai'),
-        'size' => 56,
+        'size' => $font_sizes['XL'],
         'slug' => 'extra-large'
       ),
       array(
         'name' => esc_html__('Huge', 'cai'),
         'shortName' => esc_html_x('XXL', 'Font size', 'cai'),
-        'size' => 65,
+        'size' => $font_sizes['XXL'],
         'slug' => 'huge'
       )
     )
   );
 
   /**
-   * Define custom color palette
+   * Define custom color palette for blocks
    */
-  $color_main = '#1097CD';
-  $color_alt_1 = '#262262';
-  $color_alt_2 = '#080714';
-  $color_alt_3 = '#FCB31F';
-  $color_alt_4 = '#f5f5f5';
-  $black = '#000000';
-  $white = '#ffffff';
+  $color_palette = cai_color_palette();
 
   add_theme_support(
     'editor-color-palette',
@@ -189,37 +211,37 @@ function cai_setup(){
       array(
         'name' => esc_html__('Color Main', 'cai'),
         'slug' => 'color-main',
-        'color' => $color_main
+        'color' => $color_palette['color_main']
       ),
       array(
         'name' => esc_html__('Color Alt 1', 'cai'),
         'slug' => 'color-alt-1',
-        'color' => $color_alt_1
+        'color' => $color_palette['color_alt_1']
       ),
       array(
         'name' => esc_html__('Color Alt 2', 'cai'),
         'slug' => 'color-alt-2',
-        'color' => $color_alt_2
+        'color' => $color_palette['color_alt_2']
       ),
       array(
         'name' => esc_html__('Color Alt 3', 'cai'),
         'slug' => 'color-alt-3',
-        'color' => $color_alt_3
+        'color' => $color_palette['color_alt_3']
       ),
       array(
         'name' => esc_html__('Color Alt 4', 'cai'),
         'slug' => 'color-alt-4',
-        'color' => $color_alt_4
+        'color' => $color_palette['color_alt_4']
       ),
       array(
         'name' => esc_html__('Black', 'cai'),
         'slug' => 'black',
-        'color' => $black
+        'color' => $color_palette['black']
       ),
       array(
         'name' => esc_html__('White', 'cai'),
         'slug' => 'white',
-        'color' => $white
+        'color' => $color_palette['white']
       )
     )
   );  
@@ -233,7 +255,7 @@ function cai_setup(){
       array(
         'name' => esc_html__('Color Main to Color Alt 1', 'cai'),
         'slug' => 'light-blue-to-dark-violet',
-        'gradient' => 'linear-gradient(to right, ' . $color_main . ' 0%, ' . $color_alt_1 . ' 100%)'
+        'gradient' => 'linear-gradient(to right, ' . $color_palette['color_main'] . ' 0%, ' . $color_palette['color_alt_1'] . ' 100%)'
       )
     )
   );
@@ -247,29 +269,6 @@ function cai_setup(){
   ));
 
   load_theme_textdomain('cai', get_stylesheet_directory_uri() . '/languages');
-}
-
-/**
- * required files
- */
-require_once dirname(__FILE__) . '/includes/class-wp-bootstrap-navwalker.php';
-
-/**
- * Register Widgets
- */
-add_action('widgets_init', 'cai_widgets_init');
-function cai_widgets_init(){
-  register_sidebar(
-    array(
-      'name' => esc_html__('Footer Widget 1', 'cai'),
-      'id' => 'sidebar-1',
-      'description' => esc_html__('Add widgets here to appear in column 1 of the footer', 'cai'),
-      'before_widget' => '<div id="%1$s" class="widget %2$s">',
-      'after_widget' => '</div>',
-      'before_title' => '<h4>',
-      'after_title' => '</h4>'
-    )
-  );
 }
 
 /**
@@ -306,47 +305,81 @@ function cai_custom_block_categories($categories, $post){
 }
 
 /**
+ * required files
+ */
+require_once dirname(__FILE__) . '/includes/class-wp-bootstrap-navwalker.php';
+require_once dirname(__FILE__) . '/includes/cai-fallback-menus.php';
+require_once dirname(__FILE__) . '/includes/cai-custom-post-types.php';
+require_once dirname(__FILE__) . '/includes/cai-blocks.php';
+require_once dirname(__FILE__) . '/includes/cai-options-pages.php';
+require_once dirname(__FILE__) . '/includes/cai-widgets.php';
+require_once dirname(__FILE__) . '/includes/cai-register-shortcodes.php';
+
+/**
+ * Create Custom Post Types
+ */
+add_action('init', 'cai_create_post_types');
+
+/**
+ * Register Widgets
+ */
+add_action('widgets_init', 'cai_widgets_init');
+
+/**
  * Register custom blocks
  */
 add_action('acf/init', 'cai_register_blocks');
-function cai_register_blocks(){
-  if(function_exists('acf_register_block_type')){
-    acf_register_block_type(array(
-      'name' => 'prestyled-button',
-      'title' => esc_html__('Pre-Styled Button', 'cai'),
-      'description' => esc_html__('Add a pre-styled button'),
-      'category' => 'cai-custom-blocks',
-      'icon' => 'button',
-      'align' => 'full',
-      'render_template' => get_stylesheet_directory() . '/partials/blocks/prestyled-button.php'
-    ));
-  }
-}
 
 /**
  * Create acf options pages
  */
 add_action('acf/init', 'cai_acf_options_pages');
-function cai_acf_options_pages(){
-  if(function_exists('acf_add_options_page')){
-    acf_add_options_page(array(
-      'page_title' => 'Tysons Chamber Settings',
-      'menu_title' => 'cai Settings',
-      'menu_slug' => 'cai-settings',
-      'parent_slug' => '',
-      'capability' => 'customize'
-    ));
 
-    acf_add_options_sub_page(array(
-      'page_title' => 'Company Information',
-      'menu_title' => 'Company Information',
-      'parent_slug' => 'cai-settings'
-    ));
+/**
+ * Register Shortcodes
+ */
+add_action('init', 'cai_register_shortcode');
 
-    acf_add_options_sub_page(array(
-      'page_title' => 'Site Defaults',
-      'menu_title' => 'Site Defaults',
-      'parent_slug' => 'cai-settings'
-    ));
-  }
-}
+/**
+ * Custom login logo
+ */
+add_action('login_enqueue_scripts', 'cai_login_logo');
+function cai_login_logo(){
+  $image_width = '525px';
+  $image_height = '110px';
+  $image_url = get_stylesheet_directory_uri() . '/images/logo.png'; ?>
+
+  <style>
+	  #login{
+		  width: <?php echo $image_width; ?> !important;
+	  }
+    #login h1 a, 
+    .login h1 a{
+      background-image: url(<?php echo $image_url; ?>);
+      height: <?php echo $image_height; ?>;
+      width: <?php echo $image_width; ?>;
+      background-size: contain;
+      background-repeat: no-repeat;
+      padding-bottom: 30px;
+    }
+  </style>
+<?php }
+
+add_action('acf/input/admin_footer', 'cai_acf_color_palette');
+function cai_acf_color_palette(){
+  $color_palette = cai_color_palette();
+  $acf_palette = array();
+  foreach($color_palette as $key => $value){
+    $acf_palette[] = $value;
+  } ?>
+
+  <script>
+    (function($){
+      acf.add_filter('color_picker_args', function(args, field){
+        args.palettes = <?php echo wp_json_encode($acf_palette); ?>
+
+        return args;
+      });
+    })(jQuery);
+  </script>
+<?php }
