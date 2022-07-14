@@ -1,0 +1,93 @@
+html{
+  font-size: 20px;
+  scroll-behavior: smooth;
+}
+
+body{
+  font-family: $font-family;
+  color: #000;
+  font-size: $font-size-normal;
+  overflow-x: hidden;
+}
+
+.container-fluid{
+  max-width: 1400px;
+}
+
+a{
+  transition: $transition-normal;
+  color: $color-main;
+  text-decoration: none;
+  font-weight: $font-weight-bold;
+
+  &:hover,
+  &:focus{
+    color: $color-main;
+    text-decoration: underline;
+  }
+}
+
+input[type="submit"],
+button{
+  transition: $transition-normal;
+}
+
+h1{
+  font-size: $font-size-extra-large;
+}
+
+h2{
+  font-size: $font-size-large;
+}
+
+h3{
+  font-size: $font-size-medium;
+}
+
+h4{
+  font-size: $font-size-normal;
+}
+
+p{
+  font-size: $font-size-normal;
+}
+
+img{
+  display: block;
+  max-width: 100%;
+  height: auto;
+
+  &+figcaption{
+    margin-top: -25px;
+  }
+}
+.alignnone>img,
+img.alignnone{
+  margin: 0px 25px 25px;
+}
+.aligncenter>img,
+img.aligncenter{
+  margin: 0px auto 25px;
+}
+.alignleft>img,
+img.alignleft{
+  float: left;
+  margin: 0px 25px 25px 0px;
+}
+.alignright>img,
+img.alignright{
+  float: right;
+  margin: 0px 0px 25px 25px;
+}
+.wp-block-image{
+  .alignnone>figcaption,
+  img.alignnone+figcaption,
+  .aligncenter>figcaption,
+  img.aligncenter+figcaption,
+  .alignleft>figcaption,
+  img.aligncenter+figcaption,
+  .alignright>figcaption,
+  img.alignright+figcaption{
+    margin-top: -25px;
+  }
+}
