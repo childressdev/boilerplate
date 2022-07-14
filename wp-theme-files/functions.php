@@ -1,4 +1,7 @@
 <?php
+if(!defined('ABSPATH')){ exit; }
+if(!defined('WP_DEBUG')){ define('WP_DEBUG', true); }
+
 if(WP_DEBUG === true){
   add_action('wp_footer', 'show_template');
 }
