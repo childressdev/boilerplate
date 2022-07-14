@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ChildressAgency/boilerplate.git"
+    "url": "git+https://github.com/childressdev/boilerplate.git"
   },
   "author": "Childress Agency",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/ChildressAgency/boilerplate/issues"
+    "url": "https://github.com/childressdev/boilerplate/issues"
   },
-  "homepage": "https://github.com/ChildressAgency/boilerplate#readme",
+  "homepage": "https://github.com/childressdev/boilerplate#readme",
   "devDependencies": {
     "autoprefixer": "10.4.7",
     "bootstrap": "^5.1.3",
