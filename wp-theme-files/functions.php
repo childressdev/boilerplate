@@ -348,19 +348,20 @@ add_action('init', 'cai_register_shortcode');
  */
 add_action('login_enqueue_scripts', 'cai_login_logo');
 function cai_login_logo(){
-  $image_width = '525px';
-  $image_height = '110px';
+  $image_width = '525';
+  $image_height = '110';
   $image_url = get_stylesheet_directory_uri() . '/images/logo.png'; ?>
 
   <style>
 	  #login{
-		  width: <?php echo $image_width; ?> !important;
+      width: auto !important;
+		  max-width: <?php echo ((int)$image_width > 320) ? $image_width : '320'; ?>px !important;
 	  }
     #login h1 a, 
     .login h1 a{
       background-image: url(<?php echo $image_url; ?>);
-      height: <?php echo $image_height; ?>;
-      width: <?php echo $image_width; ?>;
+      height: <?php echo $image_height; ?>px;
+      width: <?php echo $image_width; ?>px;
       background-size: contain;
       background-repeat: no-repeat;
       padding-bottom: 30px;
