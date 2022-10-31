@@ -369,6 +369,17 @@ function cai_login_logo(){
   </style>
 <?php }
 
+/**
+ * Custom login logo link
+ */
+add_filter('login_headerurl', 'cai_login_headerurl');
+function cai_login_headerurl($url){
+  return home_url();
+}
+
+/**
+ * Custom color pallette for acf color picker field
+ */
 add_action('acf/input/admin_footer', 'cai_acf_color_palette');
 function cai_acf_color_palette(){
   $color_palette = cai_color_palette();
