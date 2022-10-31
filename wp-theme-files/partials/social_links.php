@@ -15,7 +15,7 @@
   <a href="<?php echo esc_url($facebook); ?>" aria-label="Facebook" target="_blank">
     <i aria-hidden="true">
       <svg class="social-icon">
-        <use xlink:href="#icon-facebook" />
+        <use href="#icon-facebook" />
       </svg>
     </i>
     <span class="visually-hidden">Facebook</span>
@@ -24,7 +24,7 @@
   <a href="<?php echo esc_url($twitter); ?>" aria-label="Twitter" target="_blank">
     <i aria-hidden="true">
       <svg class="social-icon">
-        <use xlink:href="#icon-twitter" />
+        <use href="#icon-twitter" />
       </svg>
     </i>
     <span class="visually-hidden">Twitter</span>
@@ -33,7 +33,7 @@
   <a href="<?php echo esc_url($linkedin); ?>" aria-label="LinkedIn" target="_blank">
     <i aria-hidden="true">
       <svg class="social-icon">
-        <use xlink:href="#icon-linkedin" />
+        <use href="#icon-linkedin" />
       </svg>
     </i>
     <span class="visually-hidden">LinkedIn</span>
@@ -42,7 +42,7 @@
   <a href="<?php echo esc_url($instagram); ?>" aria-label="Instagram" target="_blank">
     <i aria-hidden="true">
       <svg class="social-icon">
-        <use xlink:href="#icon-instagram" />
+        <use href="#icon-instagram" />
       </svg>
     </i>
     <span class="visually-hidden">Instagram</span>
@@ -51,7 +51,7 @@
   <a href="<?php echo esc_url($reddit); ?>" aria-label="Reddit" target="_blank">
     <i aria-hidden="true">
       <svg class="social-icon">
-        <use xlink:href="#icon-reddit" />
+        <use href="#icon-reddit" />
       </svg>
     </i>
     <span class="visually-hidden">Reddit</span>
@@ -60,7 +60,7 @@
   <a href="<?php echo esc_url($tiktok); ?>" aria-label="TikTok" target="_blank">
     <i aria-hidden="true">
       <svg class="social-icon">
-        <use xlink:href="#icon-tiktok" />
+        <use href="#icon-tiktok" />
       </svg>
     </i>
     <span class="visually-hidden">TikTok</span>
@@ -69,7 +69,7 @@
   <a href="<?php echo esc_url($discord); ?>" aria-label="Discord" target="_blank">
     <i aria-hidden="true">
       <svg class="social-icon">
-        <use xlink:href="#icon-discord" />
+        <use href="#icon-discord" />
       </svg>
     </i>
     <span class="visually-hidden">Discord</span>
@@ -78,7 +78,7 @@
   <a href="<?php echo esc_url($youtube); ?>" aria-label="YouTube" target="_blank">
     <i aria-hidden="true">
       <svg class="social-icon">
-        <use xlink:href="#icon-youtube" />
+        <use href="#icon-youtube" />
       </svg>
     </i>
     <span class="visually-hidden">YouTube</span>
@@ -87,7 +87,7 @@
   <a href="<?php echo esc_url($pinterest); ?>" aria-label="Pinterest" target="_blank">
     <i aria-hidden="true">
       <svg class="social-icon">
-        <use xlink:href="#icon-pinterest" />
+        <use href="#icon-pinterest" />
       </svg>
     </i>
     <span class="visually-hidden">Pinterest</span>
@@ -96,7 +96,7 @@
   <a href="<?php echo esc_url($telegram); ?>" aria-label="Telegram" target="_blank">
     <i aria-hidden="true">
       <svg class="social-icon">
-        <use xlink:href="#icon-telegram" />
+        <use href="#icon-telegram" />
       </svg>
     </i>
     <span class="visually-hidden">Telegram</span>
