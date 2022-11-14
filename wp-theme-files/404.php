@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 <main id="main">
   <div class="container">
-    <?php the_field('nothing_found_message', 'option'); ?>
+    <?php get_template_part('partials/content', 'none'); ?>
   </div>
 </main>
 <?php get_footer();

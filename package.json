@@ -17,9 +17,9 @@
   },
   "homepage": "https://github.com/childressdev/boilerplate#readme",
   "devDependencies": {
-    "autoprefixer": "10.4.12",
-    "bootstrap": "^5.2.1",
-    "cssnano": "^5.1.13",
+    "autoprefixer": "10.4.13",
+    "bootstrap": "^5.2.2",
+    "cssnano": "^5.1.14",
     "gulp": "^4.0.2",
     "gulp-concat": "^2.6.1",
     "gulp-order": "^1.2.0",
@@ -27,7 +27,7 @@
     "gulp-sass": "^5.1.0",
     "gulp-sourcemaps": "^3.0.0",
     "gulp-uglify": "^3.0.2",
-    "postcss": "^8.4.16",
-    "sass": "^1.55.0"
+    "postcss": "^8.4.19",
+    "sass": "^1.56.1"
   }
 }
