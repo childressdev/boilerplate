@@ -66,7 +66,7 @@ add_action('wp_enqueue_scripts', 'cai_scripts');
 function cai_scripts(){
   wp_register_script(
     'bootstrap-scripts',
-    'https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js',
+    'https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js',
     array('jquery'),
     '',
     true
@@ -95,7 +95,7 @@ function cai_add_script_meta($tag, $handle){
       break;
 
     case 'bootstrap-scripts':
-      $tag = str_replace('></script>', ' integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>', $tag);
+      $tag = str_replace('></script>', ' integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>', $tag);
       break;
   }
 
@@ -109,7 +109,7 @@ add_action('wp_enqueue_scripts', 'cai_styles');
 function cai_styles(){
   wp_register_style(
     'google-fonts',
-    'https://fonts.googleapis.com/css?family=Maitree:400,700|Nunito+Sans:400,600,700|Nunito:700'
+    'https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700;800&display=swap'
   );
 
   wp_register_style(
@@ -319,14 +319,43 @@ require_once dirname(__FILE__) . '/includes/cai-widgets.php';
 require_once dirname(__FILE__) . '/includes/cai-register-shortcodes.php';
 
 /**
- * Create Custom Post Types
+ * Register Custom Post Types
+ * 
+ * @param string $post_type Post Type
+ * @param string $plural Plural Label
+ * @param string $single Single Label
+ * @param string $menu_icon Default is dashicons-admin-post
+ * @param array $options Post Type Arguments
  */
-add_action('init', 'cai_create_post_types');
+add_action('init', 'cai_register_post_types');
+function cai_register_post_types(){
+  cai_register_post_type(
+    'service',
+    esc_html__('Services', 'cai'),
+    esc_html__('Service', 'cai'),
+    'dashicons-hammer'
+  );
+}
 
 /**
- * Register Widgets
+ * Register Taxonomies
+ * 
+ * @param string $taxonomy Taxonomy
+ * @param string $plural Plural Label
+ * @param string $single Single Label
+ * @param string $post_type Post Type for Taxonomy
+ * @param boolean $hierarchical Default is true
+ * @param array $options Taxonomy arguments
  */
-add_action('widgets_init', 'cai_widgets_init');
+add_action('init', 'cai_register_taxonomies');
+function cai_register_taxonomies(){
+  cai_register_taxonomy(
+    'service_category',
+    esc_html__('Service Categories', 'cai'),
+    esc_html__('Service Category', 'cai'),
+    'service'
+  );
+}
 
 /**
  * Register custom blocks
@@ -337,6 +366,11 @@ add_action('acf/init', 'cai_register_blocks');
  * Create acf options pages
  */
 add_action('acf/init', 'cai_acf_options_pages');
+
+/**
+ * Register Widgets
+ */
+add_action('widgets_init', 'cai_widgets_init');
 
 /**
  * Register Shortcodes
