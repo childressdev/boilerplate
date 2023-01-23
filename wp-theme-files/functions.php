@@ -49,6 +49,14 @@ function cai_font_sizes(){
 }
 
 /**
+ * cache busting
+ * Get theme version from style.css comments
+ * 
+ */
+$theme = wp_get_theme();
+define('THEME_VERSION', $theme->get('Version'));
+
+/**
  * Use cdn jquery instead of WordPress'
  */
 add_action('wp_enqueue_scripts', 'jquery_cdn');
@@ -65,8 +73,6 @@ function jquery_cdn(){
  */
 add_action('wp_enqueue_scripts', 'cai_scripts');
 function cai_scripts(){
-  $theme_version = wp_get_theme()->get('Version');
-
   wp_register_script(
     'bootstrap-scripts',
     'https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js',
@@ -79,7 +85,7 @@ function cai_scripts(){
     'cai-scripts',
     get_stylesheet_directory_uri() . '/js/custom-scripts.min.js',
     array('jquery', 'bootstrap-scripts'),
-    $theme_version,
+    THEME_VERSION,
     true
   );
 
@@ -110,20 +116,18 @@ function cai_add_script_meta($tag, $handle){
  */
 add_action('wp_enqueue_scripts', 'cai_styles');
 function cai_styles(){
-  $theme_version = wp_get_theme()->get('Version');
-
   wp_register_style(
     'google-fonts',
     'https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700;800&display=swap',
     array(),
-    $theme_version
+    THEME_VERSION
   );
 
   wp_register_style(
     'cai-css',
     get_stylesheet_directory_uri() . '/style.css',
     array(),
-    $theme_version
+    THEME_VERSION
   );
 
   wp_enqueue_style('google-fonts');
