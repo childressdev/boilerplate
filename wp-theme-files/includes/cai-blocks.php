@@ -6,7 +6,7 @@ function cai_register_blocks(){
     acf_register_block_type(array(
       'name' => 'prestyled-button',
       'title' => esc_html__('Pre-Styled Button', 'cai'),
-      'description' => esc_html__('Add a pre-styled button'),
+      'description' => esc_html__('Add a pre-styled button', 'cai'),
       'category' => 'cai-custom-blocks',
       'icon' => 'button',
       'align' => 'full',
