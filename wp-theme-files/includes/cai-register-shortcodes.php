@@ -46,17 +46,15 @@ function cai_videos_shortcode($atts = array()){
       }
 
     echo '</div>';
-    if(function_exists('wp_pagenavi')){
-      echo '<div class="pager">';
-        wp_pagenavi(array('query' => $videos));
-      echo '</div>';
-    }
+
+    $args['query'] = $videos;
+    get_template_part('partials/content', 'pagination', $args);
 
     $output .= ob_get_contents();
     ob_end_clean();
   }
   else{
-    $output .= '<p>' . esc_html(get_field('nothing_found_message', 'option')) . '</p>';
+    get_template_part('partials/content', 'none');
   }
   wp_reset_postdata();
 
