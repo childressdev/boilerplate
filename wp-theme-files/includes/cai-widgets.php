@@ -1,7 +1,9 @@
 <?php
+namespace CAI\widgets;
+
 if(!defined('ABSPATH')){ exit; }
 
-function cai_widgets_init(){
+function register_widgets(){
   register_sidebar(
     array(
       'name' => esc_html__('Footer Widget 1', 'cai'),

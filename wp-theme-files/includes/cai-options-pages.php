@@ -1,7 +1,9 @@
 <?php
+namespace CAI\options_pages;
+
 if(!defined('ABSPATH')){ exit; }
 
-function cai_acf_options_pages(){
+function create_options_pages(){
   if(function_exists('acf_add_options_page')){
     acf_add_options_page(array(
       'page_title' => esc_html__('CAI Settings', 'cai'),
