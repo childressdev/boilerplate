@@ -2,18 +2,27 @@
 namespace CAI;
 
 if(!defined('ABSPATH')){ exit; }
-if(!defined('WP_DEBUG')){ define('WP_DEBUG', true); }
 
-if(WP_DEBUG === true && current_user_can('manage_options')){
-  add_action('wp_footer', __NAMESPACE__ . '\show_template');
+switch(wp_get_environment_type()){
+  case 'local':
+  case 'development':
+  case 'staging':
+    if(current_user_can('manage_options')){
+      define('WP_DEBUG', true);
+      add_action('wp_footer', __NAMESPACE__ . '\show_template');
+    }
+  break;
+
+  case 'production':
+  default:
+    //hide acf Custom Fields menu item
+    add_filter('acf/settings/show_admin', '__return_false');
 }
+
 function show_template() {
 	global $template;
   printf('<p style="font-size:12px;">%s</p>', $template);
 }
-
-//hide acf Custom Fields menu item (uncomment next line)
-//add_filter('acf/settings/show_admin', '__return_false');
 
 /**
  * cache busting
