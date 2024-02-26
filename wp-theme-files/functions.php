@@ -8,7 +8,6 @@ switch(wp_get_environment_type()){
   case 'development':
   case 'staging':
     if(current_user_can('manage_options')){
-      define('WP_DEBUG', true);
       add_action('wp_footer', __NAMESPACE__ . '\show_template');
     }
   break;
@@ -39,7 +38,7 @@ add_action('wp_enqueue_scripts', __NAMESPACE__ . '\jquery_cdn');
 function jquery_cdn(){
   if(!is_admin()){
     wp_deregister_script('jquery');
-    wp_register_script('jquery', 'https://code.jquery.com/jquery-3.6.0.min.js', false, null, true);
+    wp_register_script('jquery', 'https://code.jquery.com/jquery-3.7.1.min.js', false, null, true);
     wp_enqueue_script('jquery');
   }
 }
@@ -53,7 +52,7 @@ function enqueue_scripts(){
 
   wp_register_script(
     'bootstrap-scripts',
-    'https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js',
+    'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js',
     array('jquery'),
     '5.2.3',
     true
@@ -80,7 +79,7 @@ function enqueue_block_editor_scripts(){
 
   wp_register_script(
     'bootstrap-scripts',
-    'https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js',
+    'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js',
     array('jquery'),
     '5.2.3',
     true
@@ -105,11 +104,11 @@ add_filter('script_loader_tag', __NAMESPACE__ . '\add_script_meta', 10, 2);
 function add_script_meta($tag, $handle){
   switch($handle){
     case 'jquery':
-      $tag = str_replace('></script>', ' integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>', $tag);
+      $tag = str_replace('></script>', ' integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>', $tag);
       break;
 
     case 'bootstrap-scripts':
-      $tag = str_replace('></script>', ' integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>', $tag);
+      $tag = str_replace('></script>', ' integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>', $tag);
       break;
   }
 
@@ -297,4 +296,12 @@ function login_logo(){
 add_filter('login_headerurl', __NAMESPACE__ . '\login_headerurl');
 function login_headerurl($url){
   return home_url();
+}
+
+/**
+ * Show svg sprite in editor
+ */
+add_action('admin_footer', __NAMESPACE__ . '\add_svg_sprite_to_editor');
+function add_svg_sprite_to_editor(){
+  get_template_part('partials/sprites.svg');
 }
