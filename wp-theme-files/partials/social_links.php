@@ -9,6 +9,7 @@
   $pinterest = get_field('pinterest', 'option');
   $discord = get_field('discord', 'option');
   $telegram = get_field('telegram', 'option');
+  $google = get_field('google', 'option');
 ?>
 
 <?php if($facebook): ?>
@@ -100,5 +101,14 @@
       </svg>
     </i>
     <span class="visually-hidden">Telegram</span>
+  </a>
+  <?php endif; if($google): ?>
+  <a href="<?php echo esc_url($google); ?>" aria-label="Google" target="_blank">
+    <i aria-hidden="true">
+      <svg class="social-icon">
+        <use href="#icon-google" />
+      </svg>
+    </i>
+    <span class="visually-hidden">Google</span>
   </a>
 <?php endif;
