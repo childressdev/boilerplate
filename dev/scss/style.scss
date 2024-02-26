@@ -16,6 +16,7 @@
 * variable overrides
 *************************************/
 @import "fonts";
+@import "functions";
 @import "variables";
 
 /*************************************
@@ -27,6 +28,7 @@
 * main scss file with global styles
 *************************************/
 @import "main";
+@import "frontend-only";
 
 /*************************************
 * scss partial files
@@ -36,5 +38,3 @@
 
 /* sections */
 
-
-@import "wordpress";
