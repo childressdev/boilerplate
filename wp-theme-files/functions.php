@@ -239,6 +239,11 @@ function register_taxonomies(){
 add_action('acf/init', __NAMESPACE__ . '\options_pages\create_options_pages');
 
 /**
+ * Create acf social media field
+ */
+add_action('acf/include_fields', __NAMESPACE__ . '\options_pages\create_social_media_field');
+
+/**
  * Register Widgets
  */
 add_action('widgets_init', __NAMESPACE__ . '\widgets\register_widgets');
