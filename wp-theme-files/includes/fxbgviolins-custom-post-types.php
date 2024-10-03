@@ -1,5 +1,5 @@
 <?php
-namespace CAI\cpts;
+namespace FXBGVIOLINS\cpts;
 
 if(!defined('ABSPATH')){ exit; }
 
@@ -10,13 +10,13 @@ function create_post_type($post_type = '', $plural = '', $single = '', $menu_ico
     'name' => $plural,
     'singular_name' => $single,
     'menu_name' => $plural,
-    'add_new_item' => sprintf(esc_html__('Add New %s', 'cai'), $single),
-    'new_item' => sprintf(esc_html__('New %s', 'cai'), $single),
-    'edit_item' => sprintf(esc_html__('Edit %s', 'cai'), $single),
-    'view_item' => sprintf(esc_html__('View %s', 'cai'), $single),
-    'search_items' => sprintf(esc_html__('Search %s', 'cai'), $plural),
-    'all_items' => sprintf(esc_html__('All %s', 'cai'), $plural),
-    'not_found' => sprintf(esc_html__('No %s Found', 'cai'), $plural)
+    'add_new_item' => sprintf(esc_html__('Add New %s', 'fxbgviolins'), $single),
+    'new_item' => sprintf(esc_html__('New %s', 'fxbgviolins'), $single),
+    'edit_item' => sprintf(esc_html__('Edit %s', 'fxbgviolins'), $single),
+    'view_item' => sprintf(esc_html__('View %s', 'fxbgviolins'), $single),
+    'search_items' => sprintf(esc_html__('Search %s', 'fxbgviolins'), $plural),
+    'all_items' => sprintf(esc_html__('All %s', 'fxbgviolins'), $plural),
+    'not_found' => sprintf(esc_html__('No %s Found', 'fxbgviolins'), $plural)
   );
 
   $args = array(
@@ -57,17 +57,17 @@ function create_taxonomy($taxonomy = '', $plural = '', $single = '', $post_type 
     'name' => $plural,
     'singular_name' => $single,
     'menu_name' => $plural,
-    'all_items' => sprintf(esc_html__('All %s', 'cai'), $plural),
-    'edit_item' => sprintf(esc_html__('Edit %s', 'cai'), $single),
-    'view_item' => sprintf(esc_html__('View %s', 'cai'), $single),
-    'update_item' => sprintf(esc_html__('Update %s', 'cai'), $single),
-    'add_new_item' => sprintf(esc_html__('Add New %s', 'cai'), $single),
-    'parent_item' => sprintf(esc_html__('Parent %s', 'cai'), $single),
-    'search_items' => sprintf(esc_html__('Search %s', 'cai'), $plural),
-    'popular_items' => sprintf(esc_html__('Popular %s', 'cai'), $plural),
-    'add_or_remove_item' => sprintf(esc_html__('Add or Remove %s', 'cai'), $single),
-    'not_found' => sprintf(esc_html__('No %s Found', 'cai'), $plural),
-    'back_to_items' => sprintf(esc_html__('Back to %s', 'cai'), $plural)
+    'all_items' => sprintf(esc_html__('All %s', 'fxbgviolins'), $plural),
+    'edit_item' => sprintf(esc_html__('Edit %s', 'fxbgviolins'), $single),
+    'view_item' => sprintf(esc_html__('View %s', 'fxbgviolins'), $single),
+    'update_item' => sprintf(esc_html__('Update %s', 'fxbgviolins'), $single),
+    'add_new_item' => sprintf(esc_html__('Add New %s', 'fxbgviolins'), $single),
+    'parent_item' => sprintf(esc_html__('Parent %s', 'fxbgviolins'), $single),
+    'search_items' => sprintf(esc_html__('Search %s', 'fxbgviolins'), $plural),
+    'popular_items' => sprintf(esc_html__('Popular %s', 'fxbgviolins'), $plural),
+    'add_or_remove_item' => sprintf(esc_html__('Add or Remove %s', 'fxbgviolins'), $single),
+    'not_found' => sprintf(esc_html__('No %s Found', 'fxbgviolins'), $plural),
+    'back_to_items' => sprintf(esc_html__('Back to %s', 'fxbgviolins'), $plural)
   );
 
   $args = array(

@@ -2,14 +2,14 @@
 /**
  * Blocks
  * 
- * @package Jenkins Excavating & Logging
+ * @package FXBG Violins
  * @author Childress Agency, Inc
  * @since 1.0.0
  * 
  * https://www.billerickson.net/building-acf-blocks-with-block-json/
  */
 
-namespace JEL\blocks;
+namespace FXBGVIOLINS\blocks;
 
 /**
  * Register blocks
@@ -31,7 +31,7 @@ function register_custom_block_styles(){
     'core/media-text',
     array(
       'name' => 'small-icon',
-      'label' => esc_html__('Small Icon', 'jel')
+      'label' => esc_html__('Small Icon', 'fxbgviolins')
     )
   );
 
@@ -39,7 +39,7 @@ function register_custom_block_styles(){
     'core/heading',
     array(
       'name' => 'text-shadow',
-      'label' => esc_html__('Text Shadow', 'jel')
+      'label' => esc_html__('Text Shadow', 'fxbgviolins')
     )
   );
 
@@ -47,7 +47,7 @@ function register_custom_block_styles(){
     'core/paragraph',
     array(
       'name' => 'text-shadow',
-      'label' => esc_html__('Text Shadow', 'jel')
+      'label' => esc_html__('Text Shadow', 'fxbgviolins')
     )
   );
 }
@@ -65,7 +65,7 @@ function customize_core_block_styles(){
       'core/paragraph',
       'core/media-text',
     ),
-    'jel'
+    'fxbgviolins'
   );
 }
 
@@ -117,7 +117,7 @@ function block_categories($categories){
       array(
         array(
           'slug' => 'childressagency',
-          'title' => esc_html('Childress Agency Blocks', 'cai'),
+          'title' => esc_html('Childress Agency Blocks', 'fxbgviolins'),
         )
       )
     );

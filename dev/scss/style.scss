@@ -1,9 +1,9 @@
 /*!
-  Theme Name: The theme name
+  Theme Name: FXBG Violins
   Author: Childress Agency
   Author URI: https://childressagency.com
   Version: 1.0
-  Text Domain: cai
+  Text Domain: fxbgviolins
 */
 
 /*!
@@ -29,6 +29,7 @@
 *************************************/
 @import "main";
 @import "frontend-only";
+//@import "dev-only";
 
 /*************************************
 * scss partial files
@@ -37,4 +38,5 @@
 
 
 /* sections */
-
+@import "includes/header";
+@import "includes/footer";

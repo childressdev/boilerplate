@@ -1,5 +1,5 @@
 <?php
-namespace CAI;
+namespace FXBGVIOLINS;
 
 if(!defined('ABSPATH')){ exit; }
 
@@ -54,7 +54,7 @@ function enqueue_scripts(){
     'bootstrap-scripts',
     'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js',
     array('jquery'),
-    '5.2.3',
+    '5.3.3',
     true
   );
 
@@ -180,19 +180,19 @@ function theme_setup(){
     'footer-nav' => 'Footer Navigation',
   ));
 
-  load_theme_textdomain('cai', get_stylesheet_directory_uri() . '/languages');
+  load_theme_textdomain('fxbgviolins', get_stylesheet_directory_uri() . '/languages');
 }
 
 /**
  * required files
  */
 require_once dirname(__FILE__) . '/includes/class-wp-bootstrap-navwalker.php';
-require_once dirname(__FILE__) . '/includes/cai-fallback-menus.php';
-require_once dirname(__FILE__) . '/includes/cai-custom-post-types.php';
-require_once dirname(__FILE__) . '/includes/cai-blocks.php';
-require_once dirname(__FILE__) . '/includes/cai-options-pages.php';
-require_once dirname(__FILE__) . '/includes/cai-widgets.php';
-require_once dirname(__FILE__) . '/includes/cai-register-shortcodes.php';
+require_once dirname(__FILE__) . '/includes/fxbgviolins-fallback-menus.php';
+require_once dirname(__FILE__) . '/includes/fxbgviolins-custom-post-types.php';
+require_once dirname(__FILE__) . '/includes/fxbgviolins-blocks.php';
+require_once dirname(__FILE__) . '/includes/fxbgviolins-options-pages.php';
+require_once dirname(__FILE__) . '/includes/fxbgviolins-widgets.php';
+require_once dirname(__FILE__) . '/includes/fxbgviolins-register-shortcodes.php';
 
 /**
  * Register Custom Post Types
@@ -207,8 +207,8 @@ add_action('init', __NAMESPACE__ . '\register_post_types');
 function register_post_types(){
   cpts\create_post_type(
     'service',
-    esc_html__('Services', 'cai'),
-    esc_html__('Service', 'cai'),
+    esc_html__('Services', 'fxbgviolins'),
+    esc_html__('Service', 'fxbgviolins'),
     'dashicons-hammer'
   );
 }
@@ -227,8 +227,8 @@ add_action('init', __NAMESPACE__ . '\register_taxonomies');
 function register_taxonomies(){
   cpts\create_taxonomy(
     'service_category',
-    esc_html__('Service Categories', 'cai'),
-    esc_html__('Service Category', 'cai'),
+    esc_html__('Service Categories', 'fxbgviolins'),
+    esc_html__('Service Category', 'fxbgviolins'),
     'service'
   );
 }
@@ -259,8 +259,8 @@ add_action('init', __NAMESPACE__ . '\shortcodes\register_shortcode');
 add_action('admin_menu', __NAMESPACE__ . '\reusable_blocks_admin_menu');
 function reusable_blocks_admin_menu(){
   add_menu_page(
-    esc_html__('Reusable Blocks', 'cai'),
-    esc_html__('Reusable Blocks', 'cai'),
+    esc_html__('Reusable Blocks', 'fxbgviolins'),
+    esc_html__('Reusable Blocks', 'fxbgviolins'),
     'edit_posts',
     'edit.php?post_type=wp_block',
     '',

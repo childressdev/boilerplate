@@ -1,5 +1,5 @@
 <?php
-namespace CAI\shortcodes;
+namespace FXBGVIOLINS\shortcodes;
 
 if(!defined('ABSPATH')){ exit; }
 
