@@ -1,0 +1,35 @@
+/*
+  breakpoints:
+    xs: 0,
+    sm: 576px,
+    md: 768px,
+    lg: 992px,
+    xl: 1200px,
+    xxl: 1400px,
+*/
+
+:root{
+  --cai--font-family--body: "Open Sans", sans-serif;
+  --cai--font-family--heading: "Roboto", sans-serif;
+
+  --cai--font-size--extra-small: 0.875rem;
+  --cai--font-size--small: 1rem;
+  --cai--font-size--normal: 1.125rem;
+  --cai--font-size--normal-plus: 1.375rem;
+  --cai--font-size--medium: clamp(1.625rem, 0.933rem + 1.923vw, 2.125rem);
+  --cai--font-size--large: clamp(2.25rem, 1.558rem + 1.923vw, 2.75rem);
+  --cai--font-size--extra-large: clamp(2.875rem, 2.183rem + 1.923vw, 3.375rem);
+  --cai--font-size--huge: clamp(3.5rem, 2.288rem + 3.365vw, 4.375rem);
+
+  --cai--color--steel-blue: #4574b2;
+  --cai--color--golden-yellow: #ea9b23;
+  --cai--color--light-blue: #a5daf5;
+  --cai--color--burnt-red: #bd3b27;
+  --cai--color--dark-orange: #e6762c;
+  --cai--color--steel-gray: #424242;
+  --cai--color--light-gray: #908d89;
+
+  --cai--transition--normal: all .2s ease;
+  --cai--text-shadow--normal: 0px 3px 6px rgba(0, 0, 0, 1);
+  --cai--box-shadow--light: 0px 5px 10px rgba(0, 0, 0, .25);
+}

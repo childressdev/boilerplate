@@ -1,0 +1,86 @@
+html{
+  scroll-behavior: smooth;
+}
+
+body{
+  font-family: var(--pnt--font-family--body);
+  color: var(--pnt--color--steel-gray);
+  font-size: var(--pnt--font-size--normal);
+  overflow-x: hidden;
+}
+
+.container-fluid{
+  max-width: 1400px;
+}
+
+a{
+  transition: var(--pnt--transition--normal);
+}
+
+input[type="submit"],
+button{
+  transition: var(--pnt--transition--normal);
+}
+
+img{
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+figure.alignnone,
+.alignnone>img,
+img.alignnone{
+  margin: 0px 25px 25px;
+}
+figure.aligncenter,
+.aligncenter>img,
+img.aligncenter{
+  margin: 0px auto 25px;
+}
+figure.alignleft,
+.alignleft>img,
+img.alignleft{
+  float: left;
+  margin: 0px 25px 25px 0px;
+}
+figure.alignright
+.alignright>img,
+img.alignright{
+  float: right;
+  margin: 0px 0px 25px 25px;
+}
+
+.wp-block-image.alignwide,
+.wp-block-image.alignfull{
+  margin: 0px !important;
+}
+
+.inline-image img{
+  display: inline;
+  margin-left: 10px;
+}
+
+.same-height div[class^="p-"]{
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  height: 100%;
+
+  & > *{
+    height: 100%;
+  }
+}
+
+.font-size-huge{
+  font-size: var(--wp--preset--font-size--huge);
+  font-weight: 700;
+  font-family: var(--wp--preset--font-family--heading);
+}
+
+.object-fit-contain img{
+  object-fit: contain !important;
+}
+
+figure.mb-0 > img{
+  margin-bottom: 0px !important;
+}

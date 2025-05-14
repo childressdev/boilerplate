@@ -1,8 +1,9 @@
 .container-breakout,
-.wp-block-cover.alignfull {
+.wp-block-cover.alignfull,
+.wp-block-image.alignfull {
   width: 100vw !important;
   left: 50%;
-  margin-left: -50vw;
+  margin-left: -50vw !important;
   max-width: none !important;
   position: relative;
 }
@@ -24,4 +25,8 @@
 #wpadminbar:hover,
 #wpadminbar:focus{
   opacity: 1;
+}
+
+mark{
+  padding: 0 !important;
 }
