@@ -1,11 +1,13 @@
 <?php
+namespace CAI\shortcodes;
+
 if(!defined('ABSPATH')){ exit; }
 
-function cai_register_shortcode(){
-  add_shortcode('cai_videos', 'cai_videos_shortcode');
+function register_shortcode(){
+  add_shortcode('cai_videos', __NAMESPACE__ . '\cai_videos_shortcode');
 }
 
-function cai_videos_shortcode($atts = array()){
+function videos_shortcode($atts = array()){
   $options = shortcode_atts(
     array(
       'posts_per_page' => 9,

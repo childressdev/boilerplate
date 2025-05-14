@@ -1,0 +1,28 @@
+{
+  "name": "jel/hero-slider",
+  "title": "Hero Slider",
+  "description": "Add a hero slider to the top of the page.",
+  "style": "",
+  "script": "",
+  "category": "childressagency",
+  "icon": "slides",
+  "apiVersion": 2,
+  "version": "1.0.0",
+  "keywords": [],
+  "acf": {
+    "mode": "preview",
+    "renderTemplate": "render.php"
+  },
+  "styles": [],
+  "supports": {
+    "align": true,
+    "typography": {
+      "lineHeight": true,
+      "fontSize": true
+    },
+    "color": {
+      "text": true,
+      "link": true
+    }
+  }
+}

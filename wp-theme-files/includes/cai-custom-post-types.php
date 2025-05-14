@@ -1,7 +1,9 @@
 <?php
+namespace CAI\cpts;
+
 if(!defined('ABSPATH')){ exit; }
 
-function cai_register_post_type($post_type = '', $plural = '', $single = '', $menu_icon = 'dashicons-admin-post', $options = array()){
+function create_post_type($post_type = '', $plural = '', $single = '', $menu_icon = 'dashicons-admin-post', $options = array()){
   if(!$post_type || !$plural || !$single){ return false; }
 
   $labels = array(
@@ -48,7 +50,7 @@ function cai_register_post_type($post_type = '', $plural = '', $single = '', $me
   register_post_type($post_type, $args);
 }
 
-function cai_register_taxonomy($taxonomy = '', $plural = '', $single = '', $post_type = '', $hierarchical = true, $options = array()){
+function create_taxonomy($taxonomy = '', $plural = '', $single = '', $post_type = '', $hierarchical = true, $options = array()){
   if(!$taxonomy || !$plural || !$single){ return false; }
 
   $labels = array(

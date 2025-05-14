@@ -11,6 +11,8 @@
           }
           else{
             the_content();
+
+            get_template_part('partials/content', 'edit_link');
           }
         }
 
