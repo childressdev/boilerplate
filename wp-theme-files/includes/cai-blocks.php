@@ -2,14 +2,14 @@
 /**
  * Blocks
  * 
- * @package Jenkins Excavating & Logging
+ * @package Theme Name
  * @author Childress Agency, Inc
  * @since 1.0.0
  * 
  * https://www.billerickson.net/building-acf-blocks-with-block-json/
  */
 
-namespace JEL\blocks;
+namespace CAI\blocks;
 
 /**
  * Register blocks
@@ -50,6 +50,42 @@ function register_custom_block_styles(){
       'label' => esc_html__('Text Shadow', 'jel')
     )
   );
+
+  /**
+   * wp-bootstrap-blocks styles
+  */
+  register_block_style(
+    'wp-bootstrap-blocks/row',
+    array(
+      'name' => 'same-height',
+      'label' => esc_html__('Same Height Columns', 'cvbt')
+    )
+  );
+  register_block_style(
+    'wp-bootstrap-blocks/row',
+    array(
+      'name' => 'align-items-center',
+      'label' => esc_html__('Align Items Center', 'cvbt')
+    )
+  ); 
+  
+  /**
+   * separator styles
+  */
+  register_block_style(
+    'core/separator',
+    array(
+      'name' => 'left-align',
+      'label' => esc_html__('Left Align', 'nava')
+    )
+  );
+  register_block_style(
+    'core/separator',
+    array(
+      'name' => 'right-align',
+      'label' => esc_html__('Right Align', 'nava')
+    )
+  );
 }
 
 /**
@@ -64,6 +100,7 @@ function customize_core_block_styles(){
       'core/heading',
       'core/paragraph',
       'core/media-text',
+      'wp-bootstrap-blocks/row',
     ),
     'jel'
   );
