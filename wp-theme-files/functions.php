@@ -64,7 +64,7 @@ function enqueue_scripts(){
 /**
  * Enqueue block editor scripts
  */
-add_action('enqueue_block_editor_assets', __NAMESPACE__ . '\enqueue_block_editor_scripts');
+add_action('enqueue_block_assets', __NAMESPACE__ . '\enqueue_block_editor_scripts');
 function enqueue_block_editor_scripts(){
   $handle = __NAMESPACE__ . '-editor-scripts';
 
@@ -100,13 +100,57 @@ function add_script_meta($tag, $handle){
 /**
  * Enqueue styles
  * 
+ * These are loaded only on the frontend.
  * Order is set 8 so BootStrap loads before WordPress
  */
 add_action('wp_enqueue_scripts', __NAMESPACE__ . '\enqueue_styles', 8);
 function enqueue_styles(){
-  $handle = __NAMESPACE__ . '-css';
+  $handle = __NAMESPACE__;
 
   wp_register_style(
+    $handle . '-frontend-only',
+    get_stylesheet_directory_uri() . '/assets/css/frontend-only.css',
+    array($handle . '-main', $handle . '-variables'),
+    CAI_THEME_VERSION
+  );
+
+  wp_register_style(
+    $handle . '-header',
+    get_stylesheet_directory_uri() . '/assets/css/header.css',
+    array($handle . '-main', $handle . '-variables'),
+    CAI_THEME_VERSION
+  );
+
+  wp_register_style(
+    $handle . '-footer',
+    get_stylesheet_directory_uri() . '/assets/css/footer.css',
+    array($handle . '-main', $handle . '-variables'),
+    CAI_THEME_VERSION
+  );
+
+  wp_register_style(
+    $handle,
+    get_stylesheet_directory_uri() . '/style.css',
+    array('bootstrap-styles'),
+    CAI_THEME_VERSION
+  );
+
+  wp_enqueue_style($handle . '-frontend-only');
+  wp_enqueue_style($handle . '-header');
+  wp_enqueue_style($handle . '-footer');
+  wp_enqueue_style($handle);
+}
+
+/**
+ * Enqueue block editor styles
+ * 
+ * These are loaded both on the frontend and in the block editor.
+ */
+add_action('enqueue_block_assets', __NAMESPACE__ . '\enqueue_block_styles');
+function enqueue_block_styles(){
+  $handle = __NAMESPACE__;
+
+    wp_register_style(
     'bootstrap-styles',
     'https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css',
     array(),
@@ -120,31 +164,17 @@ function enqueue_styles(){
     CAI_THEME_VERSION
   );
 
-  wp_register_style(
+    wp_register_style(
     $handle . '-main',
     get_stylesheet_directory_uri() . '/assets/css/main.css',
-    array($handle . 'variables'),
+    array($handle . '-variables'),
     CAI_THEME_VERSION
   );
 
   wp_register_style(
-    $handle . '-frontend-only',
-    get_stylesheet_directory_uri() . '/assets/css/frontend-only.css',
-    array($handle . 'main', $handle . 'variables'),
-    CAI_THEME_VERSION
-  );
-
-  wp_register_style(
-    $handle . '-header',
-    get_stylesheet_directory_uri() . '/assets/css/header.css',
-    array($handle . 'main', $handle . 'variables'),
-    CAI_THEME_VERSION
-  );
-
-  wp_register_style(
-    $handle . '-footer',
-    get_stylesheet_directory_uri() . '/assets/css/footer.css',
-    array($handle . 'main', $handle . 'variables'),
+    $handle . '-editor',
+    get_stylesheet_directory_uri() . '/assets/css/editor.css',
+    array($handle . '-variables'),
     CAI_THEME_VERSION
   );
 
@@ -158,9 +188,7 @@ function enqueue_styles(){
   wp_enqueue_style('bootstrap-styles');
   wp_enqueue_style($handle . '-variables');
   wp_enqueue_style($handle . '-main');
-  wp_enqueue_style($handle . '-frontend-only');
-  wp_enqueue_style($handle . '-header');
-  wp_enqueue_style($handle . '-footer');
+  wp_enqueue_style($handle . '-editor');
   wp_enqueue_style($handle);
 }
 
@@ -199,21 +227,11 @@ function theme_setup(){
     )
   );
 
-  add_theme_support('editor-styles');
   add_theme_support('wp-block-styles');
   add_theme_support('responsive-embeds');
   add_theme_support('align-wide');
   add_theme_support('custom-line-height');
   add_theme_support('custom-spacing');
-
-  add_editor_style(
-    array(
-      get_stylesheet_directory_uri() . '/assets/css/variables.css',
-      get_stylesheet_directory_uri() . '/assets/css/main.css',
-      get_stylesheet_directory_uri() . '/assets/css/editor.css',
-      urlencode('https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css')
-    )
-  );
 
   /**
    * Register Navs
@@ -234,8 +252,6 @@ require_once dirname(__FILE__) . '/includes/cai-fallback-menus.php';
 require_once dirname(__FILE__) . '/includes/cai-custom-post-types.php';
 require_once dirname(__FILE__) . '/includes/cai-blocks.php';
 require_once dirname(__FILE__) . '/includes/cai-options-pages.php';
-require_once dirname(__FILE__) . '/includes/cai-widgets.php';
-require_once dirname(__FILE__) . '/includes/cai-register-shortcodes.php';
 
 /**
  * Register Custom Post Types
@@ -285,16 +301,6 @@ add_action('acf/init', __NAMESPACE__ . '\options_pages\create_options_pages');
  * Create acf social media field
  */
 add_action('acf/include_fields', __NAMESPACE__ . '\options_pages\create_social_media_field');
-
-/**
- * Register Widgets
- */
-//add_action('widgets_init', __NAMESPACE__ . '\widgets\register_widgets');
-
-/**
- * Register Shortcodes
- */
-//add_action('init', __NAMESPACE__ . '\shortcodes\register_shortcode');
 
 /**
  * Add reusable blocks menu item
