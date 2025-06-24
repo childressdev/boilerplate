@@ -6,18 +6,6 @@
   max-width: none;
 }
 
-.text-center{
-  text-align: center;
-}
-.text-right,
-.text-end{
-  text-align: right;
-}
-.text-left,
-.text-start{
-  text-align: left;
-}
-
 .block-editor-block-list__layout.is-root-container{
   padding-left: 15px !important;
   padding-right: 15px !important;

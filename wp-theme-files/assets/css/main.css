@@ -27,27 +27,33 @@ img{
   max-width: 100%;
   height: auto;
 }
-figure.alignnone,
-.alignnone>img,
-img.alignnone{
-  margin: 0px 25px 25px;
-}
+
 figure.aligncenter,
 .aligncenter>img,
 img.aligncenter{
-  margin: 0px auto 25px;
+  margin: 0px auto 0px;
 }
 figure.alignleft,
 .alignleft>img,
 img.alignleft{
   float: left;
-  margin: 0px 25px 25px 0px;
 }
 figure.alignright
 .alignright>img,
 img.alignright{
   float: right;
-  margin: 0px 0px 25px 25px;
+}
+
+.text-center{
+  text-align: center;
+}
+.text-right,
+.text-end{
+  text-align: right;
+}
+.text-left,
+.text-start{
+  text-align: left;
 }
 
 .wp-block-image.alignwide,
@@ -79,8 +85,4 @@ img.alignright{
 
 .object-fit-contain img{
   object-fit: contain !important;
-}
-
-figure.mb-0 > img{
-  margin-bottom: 0px !important;
 }
