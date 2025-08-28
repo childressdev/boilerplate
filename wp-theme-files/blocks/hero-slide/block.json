@@ -1,0 +1,20 @@
+{
+  "name": "cai/hero-slide",
+  "title": "Hero Slide",
+  "description": "A single slide to go in the hero slider block.",
+  "style": "",
+  "script": "",
+  "category": "childressagency",
+  "icon": "slides",
+  "apiVersion": 3,
+  "version": "1.0",
+  "keywords": [],
+  "parent": ["cai/hero"],
+  "acf": {
+    "mode": "preview",
+    "renderTemplate": "render.php"
+  },
+  "styles": [],
+  "supports": {},
+  "attributes": {}
+}
