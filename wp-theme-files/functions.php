@@ -29,7 +29,7 @@ function show_template() {
  * 
  */
 $theme = wp_get_theme();
-define('THEME_VERSION', $theme->get('Version'));
+define('CAI_THEME_VERSION', $theme->get('Version'));
 
 /**
  * Use cdn jquery instead of WordPress'
@@ -52,49 +52,31 @@ function enqueue_scripts(){
 
   wp_register_script(
     'bootstrap-scripts',
-    'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js',
+    'https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js',
     array('jquery'),
-    '5.2.3',
-    true
-  );
-
-  wp_register_script(
-    $handle,
-    get_stylesheet_directory_uri() . '/js/custom-scripts.min.js',
-    array('jquery', 'bootstrap-scripts'),
-    THEME_VERSION,
+    '5.3.5',
     true
   );
 
   wp_enqueue_script('bootstrap-scripts');
-  wp_enqueue_script($handle);
 }
 
 /**
  * Enqueue block editor scripts
  */
-add_action('enqueue_block_editor_assets', __NAMESPACE__ . '\enqueue_block_editor_scripts');
+add_action('enqueue_block_assets', __NAMESPACE__ . '\enqueue_block_editor_scripts');
 function enqueue_block_editor_scripts(){
   $handle = __NAMESPACE__ . '-editor-scripts';
 
   wp_register_script(
     'bootstrap-scripts',
-    'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js',
+    'https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js',
     array('jquery'),
-    '5.2.3',
-    true
-  );
-
-  wp_register_script(
-    $handle,
-    get_template_directory_uri() . '/js/custom-scripts.min.js',
-    array('wp-blocks', 'wp-element', 'wp-i18n', 'jquery', 'bootstrap-scripts'),
-    THEME_VERSION,
+    '5.3.5',
     true
   );
 
   wp_enqueue_script('bootstrap-scripts');
-  wp_enqueue_script($handle);
 }
 
 /**
@@ -108,7 +90,7 @@ function add_script_meta($tag, $handle){
       break;
 
     case 'bootstrap-scripts':
-      $tag = str_replace('></script>', ' integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>', $tag);
+      $tag = str_replace('></script>', ' integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>', $tag);
       break;
   }
 
@@ -118,28 +100,110 @@ function add_script_meta($tag, $handle){
 /**
  * Enqueue styles
  * 
+ * These are loaded only on the frontend.
  * Order is set 8 so BootStrap loads before WordPress
  */
 add_action('wp_enqueue_scripts', __NAMESPACE__ . '\enqueue_styles', 8);
 function enqueue_styles(){
-  $handle = __NAMESPACE__ . '-css';
+  $handle = __NAMESPACE__;
 
   wp_register_style(
-    'google-fonts',
-    'https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700;800&display=swap',
-    array(),
-    THEME_VERSION
+    $handle . '-frontend-only',
+    get_stylesheet_directory_uri() . '/assets/css/frontend-only.css',
+    array($handle . '-main', $handle . '-variables'),
+    CAI_THEME_VERSION
+  );
+
+  wp_register_style(
+    $handle . '-header',
+    get_stylesheet_directory_uri() . '/assets/css/header.css',
+    array($handle . '-main', $handle . '-variables'),
+    CAI_THEME_VERSION
+  );
+
+  wp_register_style(
+    $handle . '-footer',
+    get_stylesheet_directory_uri() . '/assets/css/footer.css',
+    array($handle . '-main', $handle . '-variables'),
+    CAI_THEME_VERSION
   );
 
   wp_register_style(
     $handle,
     get_stylesheet_directory_uri() . '/style.css',
-    array(),
-    THEME_VERSION
+    array('bootstrap-styles'),
+    CAI_THEME_VERSION
   );
 
-  wp_enqueue_style('google-fonts');
+  wp_enqueue_style($handle . '-frontend-only');
+  wp_enqueue_style($handle . '-header');
+  wp_enqueue_style($handle . '-footer');
   wp_enqueue_style($handle);
+}
+
+/**
+ * Enqueue block editor styles
+ * 
+ * These are loaded both on the frontend and in the block editor.
+ */
+add_action('enqueue_block_assets', __NAMESPACE__ . '\enqueue_block_styles');
+function enqueue_block_styles(){
+  $handle = __NAMESPACE__;
+
+    wp_register_style(
+    'bootstrap-styles',
+    'https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css',
+    array(),
+    CAI_THEME_VERSION
+  );
+
+  wp_register_style(
+    $handle . '-variables',
+    get_stylesheet_directory_uri() . '/assets/css/variables.css',
+    array(),
+    CAI_THEME_VERSION
+  );
+
+    wp_register_style(
+    $handle . '-main',
+    get_stylesheet_directory_uri() . '/assets/css/main.css',
+    array($handle . '-variables'),
+    CAI_THEME_VERSION
+  );
+
+  wp_register_style(
+    $handle . '-editor',
+    get_stylesheet_directory_uri() . '/assets/css/editor.css',
+    array($handle . '-variables'),
+    CAI_THEME_VERSION
+  );
+
+  wp_register_style(
+    $handle,
+    get_stylesheet_directory_uri() . '/style.css',
+    array('bootstrap-styles'),
+    CAI_THEME_VERSION
+  );
+
+  wp_enqueue_style('bootstrap-styles');
+  wp_enqueue_style($handle . '-variables');
+  wp_enqueue_style($handle . '-main');
+  wp_enqueue_style($handle . '-editor');
+  wp_enqueue_style($handle);
+}
+
+/**
+ * Add integrity check to cdn styles
+ */
+add_filter('style_loader_tag', __NAMESPACE__ . '\add_style_meta', 10, 2);
+function add_style_meta($tag, $handle){
+  switch($handle){
+    case 'bootstrap-styles':
+      $tag = str_replace('></link>', ' integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous"></link>', $tag);
+      break;
+  }
+
+  return $tag;
 }
 
 /**
@@ -163,14 +227,11 @@ function theme_setup(){
     )
   );
 
-  add_theme_support('editor-styles');
   add_theme_support('wp-block-styles');
   add_theme_support('responsive-embeds');
   add_theme_support('align-wide');
   add_theme_support('custom-line-height');
   add_theme_support('custom-spacing');
-
-  add_editor_style('editor.css');
 
   /**
    * Register Navs
@@ -191,8 +252,6 @@ require_once dirname(__FILE__) . '/includes/cai-fallback-menus.php';
 require_once dirname(__FILE__) . '/includes/cai-custom-post-types.php';
 require_once dirname(__FILE__) . '/includes/cai-blocks.php';
 require_once dirname(__FILE__) . '/includes/cai-options-pages.php';
-require_once dirname(__FILE__) . '/includes/cai-widgets.php';
-require_once dirname(__FILE__) . '/includes/cai-register-shortcodes.php';
 
 /**
  * Register Custom Post Types
@@ -244,23 +303,13 @@ add_action('acf/init', __NAMESPACE__ . '\options_pages\create_options_pages');
 add_action('acf/include_fields', __NAMESPACE__ . '\options_pages\create_social_media_field');
 
 /**
- * Register Widgets
- */
-add_action('widgets_init', __NAMESPACE__ . '\widgets\register_widgets');
-
-/**
- * Register Shortcodes
- */
-add_action('init', __NAMESPACE__ . '\shortcodes\register_shortcode');
-
-/**
  * Add reusable blocks menu item
  */
 add_action('admin_menu', __NAMESPACE__ . '\reusable_blocks_admin_menu');
 function reusable_blocks_admin_menu(){
   add_menu_page(
-    esc_html__('Reusable Blocks', 'cai'),
-    esc_html__('Reusable Blocks', 'cai'),
+    esc_html__('Theme Patterns', 'cai'),
+    esc_html__('Theme Patterns', 'cai'),
     'edit_posts',
     'edit.php?post_type=wp_block',
     '',
@@ -276,7 +325,7 @@ add_action('login_enqueue_scripts', __NAMESPACE__ . '\login_logo');
 function login_logo(){
   $image_width = '525';
   $image_height = '110';
-  $image_url = get_stylesheet_directory_uri() . '/images/logo.png'; ?>
+  $image_url = get_stylesheet_directory_uri() . '/assets/images/logo.png'; ?>
 
   <style>
 	  #login{
@@ -310,3 +359,16 @@ add_action('admin_footer', __NAMESPACE__ . '\add_svg_sprite_to_editor');
 function add_svg_sprite_to_editor(){
   get_template_part('partials/sprites.svg');
 }
+
+add_filter( 'wp_bootstrap_blocks_container_default_attributes', __NAMESPACE__ . '\container_default_attributes', 10, 1 );
+function container_default_attributes( $default_attributes ) {
+    $default_attributes['isFluid'] = true;
+    $default_attributes['marginAfter'] = 'mb-0';
+
+    return $default_attributes;
+}
+
+/**
+ * Don't show default WP block patterns
+ */
+add_filter('should_load_remote_block_patterns', '__return_false');

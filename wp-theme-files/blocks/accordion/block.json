@@ -1,0 +1,17 @@
+{
+  "name": "cai/accordion",
+  "title": "Accordion",
+  "description": "Add an accordion section",
+  "style": "file:./style.css",
+  "script": "",
+  "category": "childressagency",
+  "icon": "block-default",
+  "apiVersion": 3,
+  "keywords": [],
+  "acf": {
+    "mode": "preview",
+    "renderTemplate": "render.php"
+  },
+  "styles": [],
+  "supports": {}
+}

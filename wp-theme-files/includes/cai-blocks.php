@@ -2,14 +2,14 @@
 /**
  * Blocks
  * 
- * @package Jenkins Excavating & Logging
+ * @package Theme Name
  * @author Childress Agency, Inc
  * @since 1.0.0
  * 
  * https://www.billerickson.net/building-acf-blocks-with-block-json/
  */
 
-namespace JEL\blocks;
+namespace CAI\blocks;
 
 /**
  * Register blocks
@@ -31,7 +31,7 @@ function register_custom_block_styles(){
     'core/media-text',
     array(
       'name' => 'small-icon',
-      'label' => esc_html__('Small Icon', 'jel')
+      'label' => esc_html__('Small Icon', 'cai')
     )
   );
 
@@ -39,7 +39,7 @@ function register_custom_block_styles(){
     'core/heading',
     array(
       'name' => 'text-shadow',
-      'label' => esc_html__('Text Shadow', 'jel')
+      'label' => esc_html__('Text Shadow', 'cai')
     )
   );
 
@@ -47,7 +47,43 @@ function register_custom_block_styles(){
     'core/paragraph',
     array(
       'name' => 'text-shadow',
-      'label' => esc_html__('Text Shadow', 'jel')
+      'label' => esc_html__('Text Shadow', 'cai')
+    )
+  );
+
+  /**
+   * wp-bootstrap-blocks styles
+  */
+  register_block_style(
+    'wp-bootstrap-blocks/row',
+    array(
+      'name' => 'same-height',
+      'label' => esc_html__('Same Height Columns', 'cai')
+    )
+  );
+  register_block_style(
+    'wp-bootstrap-blocks/row',
+    array(
+      'name' => 'align-items-center',
+      'label' => esc_html__('Align Items Center', 'cai')
+    )
+  ); 
+  
+  /**
+   * separator styles
+  */
+  register_block_style(
+    'core/separator',
+    array(
+      'name' => 'left-align',
+      'label' => esc_html__('Left Align', 'cai')
+    )
+  );
+  register_block_style(
+    'core/separator',
+    array(
+      'name' => 'right-align',
+      'label' => esc_html__('Right Align', 'cai')
     )
   );
 }
@@ -64,6 +100,7 @@ function customize_core_block_styles(){
       'core/heading',
       'core/paragraph',
       'core/media-text',
+      'wp-bootstrap-blocks/row',
     ),
     'jel'
   );
@@ -88,7 +125,7 @@ function load_blocks(){
           'block-' . $block,
           $block_folder . '/style.css',
           null,
-          THEME_VERSION
+          CAI_THEME_VERSION
         );
       }
 
@@ -150,13 +187,13 @@ function get_blocks(){
   $blocks = get_option('cai_blocks');
   $version = get_option('cai_blocks_version');
   if(empty($blocks) 
-      || version_compare(THEME_VERSION, $version) 
+      || version_compare(CAI_THEME_VERSION, $version) 
       || (function_exists('wp_get_environment_type') && wp_get_environment_type() !== 'production')){
     $blocks = scandir(get_template_directory() . '/blocks/');
     $blocks = array_values(array_diff($blocks, array('..', '.', '.DS_Store', '_base-block')));
 
     update_option('cai_blocks', $blocks);
-    update_option('cai_blocks_version', THEME_VERSION);
+    update_option('cai_blocks_version', CAI_THEME_VERSION);
   }
 
   return $blocks;

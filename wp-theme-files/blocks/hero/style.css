@@ -1,0 +1,17 @@
+#hero{
+  --swiper-theme-color: currentColor;
+  --swiper-pagination-bullet-size: 15px;
+  --swiper-pagination-bullet-inactive-opacity: 1;
+  --swiper-pagination-bullet-inactive-color: #fff;
+}
+
+#hero .hero-slide{
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  position: relative;  
+}
+
+#hero .swiper-pagination-bullet{
+  border: 1px solid currentColor;
+}

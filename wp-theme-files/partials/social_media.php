@@ -4,7 +4,7 @@
       $platform = get_sub_field('platform');
       $link = get_sub_field('platform_link');
     ?>
-    <a href="<?php echo esc_url($link); ?>" aria-label="<?php echo esc_attr($platform['label']); ?>" target="_blank">
+    <a href="<?php echo esc_url($link); ?>" aria-label="<?php echo esc_attr($platform['label']); ?>" target="_blank" rel="noopener noreferrer">
       <i aria-hidden="true">
         <svg class="social-icon">
           <use href="#icon-<?php echo esc_attr($platform['value']); ?>" />

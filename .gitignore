@@ -80,3 +80,5 @@ Archive/
 node_modules/
 **/vendors/*
 !dev/scss/includes/vendors/_bootstrap.scss
+*.bat
+*.log

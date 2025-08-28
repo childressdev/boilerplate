@@ -1,0 +1,35 @@
+.accordion{
+  --bs-accordion-btn-icon: url('data:image/svg+xml,%3Csvg width="36" height="37" viewBox="0 0 36 37" fill="none" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M18 36.0273C27.9411 36.0273 36 27.9685 36 18.0273C36 8.08622 27.9411 0.0273438 18 0.0273438C8.05888 0.0273438 0 8.08622 0 18.0273C0 27.9685 8.05888 36.0273 18 36.0273Z" fill="%23DDDDDD"/%3E%3Cpath d="M18.0001 22.4891C17.7199 22.4891 17.439 22.3819 17.2253 22.1683L10.4949 15.4378C10.0668 15.0097 10.0668 14.3156 10.4949 13.8875C10.923 13.4594 11.6172 13.4594 12.0452 13.8875L18.0001 19.8423L23.955 13.8875C24.3831 13.4594 25.0772 13.4594 25.5045 13.8875C25.9326 14.3156 25.9326 15.0097 25.5045 15.4378L18.7749 22.1683C18.5612 22.3819 18.2803 22.4891 18.0001 22.4891Z" fill="black"/%3E%3C/svg%3E');
+  --bs-accordion-btn-active-icon: url('data:image/svg+xml,%3Csvg width="36" height="37" viewBox="0 0 36 37" fill="none" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M18 36.0273C27.9411 36.0273 36 27.9685 36 18.0273C36 8.08622 27.9411 0.0273438 18 0.0273438C8.05888 0.0273438 0 8.08622 0 18.0273C0 27.9685 8.05888 36.0273 18 36.0273Z" fill="%23DDDDDD"/%3E%3Cpath d="M18.0001 22.4891C17.7199 22.4891 17.439 22.3819 17.2253 22.1683L10.4949 15.4378C10.0668 15.0097 10.0668 14.3156 10.4949 13.8875C10.923 13.4594 11.6172 13.4594 12.0452 13.8875L18.0001 19.8423L23.955 13.8875C24.3831 13.4594 25.0772 13.4594 25.5045 13.8875C25.9326 14.3156 25.9326 15.0097 25.5045 15.4378L18.7749 22.1683C18.5612 22.3819 18.2803 22.4891 18.0001 22.4891Z" fill="black"/%3E%3C/svg%3E');
+  --bs-accordion-btn-icon-width: 36px;
+}
+
+.accordion-item{
+  border: 1px solid #ddd !important;
+  margin-bottom: 15px;
+  border-radius: 0 !important;
+  background-color: transparent;
+}
+
+.accordion-button{
+  font-size: var(--wp--preset--font-size--cai-medium);
+  color: var(--wp--preset--color--cai-dark-gray);
+  font-weight: 700;
+  box-shadow: none;
+  border: none;
+  background-color: transparent;
+
+  &:not(.collapsed) {
+    background-color: transparent;
+  }
+
+  &:focus{
+    border: none;
+    box-shadow: none;
+  }
+}
+
+.accordion-icon{
+  display: inline-block;
+  margin-right: 20px;
+}
